@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+external-apis:
+  classes-service:
+    urls:
+      host: https://localhost:8081
+      paths:
+        classesByCourseIdPath: "/api/classes?courseId="
+
+    api-key:
+  documents-service:
+    urls:
+      host: https://localhost:8082 #http://document-service, onrender.com on deployment
+      paths:
+        docByCourseIdPath: "/api/documents?courseId="
+    api-key:
+  db-connector:
+    urls:
+      host: http:localhost:8070
+      paths:
+        getCourses:"/api/getCoursesTable"
