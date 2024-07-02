@@ -1,6 +1,6 @@
-package com.example.demo.config;
+package com.diversitech.courseService.config;
 
-import com.example.demo.service.CourseService;
+import com.diversitech.courseService.service.CourseService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;

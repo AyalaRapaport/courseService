@@ -1,6 +1,6 @@
-package com.example.demo;
+package com.diversitech.courseService;
 
-import com.example.demo.model.Classes;
+import com.diversitech.courseService.model.Classes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

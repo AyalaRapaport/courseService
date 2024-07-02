@@ -1,10 +1,10 @@
-package com.example.demo;
+package com.diversitech.courseService;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan("com.example.demo.config")
+@ComponentScan("com.diversitech.courseService.config")
 @SpringBootApplication
 public class DemoApplication {
 

@@ -19,4 +19,13 @@ external-apis:
     urls:
       host: http:localhost:8070
       paths:
-        getCourses:"/api/getCoursesTable"
+        getCourses:
+         "/api/getCoursesTable"
+        getCourseById:
+         "/api/getCoursesById"
+        addCourse:
+         "/api/addCourse"
+        updateCourse:
+         "/api/updateCourse"
+        deleteCourse:
+         "/api/deleteCourse"
