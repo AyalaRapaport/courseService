@@ -11,6 +11,8 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -47,15 +49,6 @@ public class CourseService {
         this.restTemplate = restTemplate;
     }
 
-    @PostConstruct
-    public void init() {
-        printDocumentsServicePath();
-    }
-
-    public void printDocumentsServicePath() {
-        System.out.println("documentsServicePath: " + documentsServicePath);
-    }
-
     public ResponseEntity<Course> getCourseById(String courseId) {
         String url = dbConnectorHost + getCourseById + courseId;
         HttpHeaders headers = new HttpHeaders();
@@ -64,7 +57,16 @@ public class CourseService {
         });
         return response;
     }
-
+//    public ResponseEntity<List<Course>> getCourses() {
+//        List<Course> courses = new ArrayList<>();
+//
+//        // דוגמאות לנתוני קורסים דמוייניים
+//        courses.add(new Course(1, "Introduction to Java", "Learn the basics of Java programming language", new Date(), new Date()));
+//        courses.add(new Course(2, "Web Development with Angular", "Build dynamic web applications with Angular framework", new Date(), new Date()));
+//        courses.add(new Course(3, "Database Design and Management", "Learn SQL and database management concepts", new Date(), new Date()));
+//
+//        return new ResponseEntity<>(courses, HttpStatus.OK);
+//    }
     public ResponseEntity<List<Course>> getCourses() {
         String url = dbConnectorHost + getCourses;
         HttpHeaders headers = new HttpHeaders();
@@ -75,7 +77,7 @@ public class CourseService {
     }
 
     public ResponseEntity<Course> addCourse(Course course) {
-        String url = dbConnectorHost + getCourseById;
+        String url = dbConnectorHost + addCourse;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<Course> entity = new HttpEntity<>(course, headers);

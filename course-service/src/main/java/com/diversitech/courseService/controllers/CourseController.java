@@ -22,17 +22,18 @@ public class CourseController {
         this.courseService = courseService;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<Course>> getAllCourses() {
+        System.out.println("inside getAllCourses");
         return courseService.getCourses();
     }
 
-    @GetMapping("/")
+    @GetMapping("/courseId")
     public ResponseEntity<Course> getCourseByCourseId(@RequestParam String courseId) {
         return courseService.getCourseById(courseId);
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<Course> addCourse(@RequestBody Course course) {
         return courseService.addCourse(course);
     }
@@ -58,12 +59,6 @@ public class CourseController {
     public ResponseEntity<List<Documents>> getDocumentsByCourseId(@PathVariable int courseId) {
         return courseService.getDocumentsListResponseEntity(courseId);
     }
-
-
-//    @GetMapping("/{courseId}/documents")
-//    public ResponseEntity<List<Documents>> getDocumentsByCourseId(@PathVariable int courseId) {
-//        return courseService.getDocumentsListResponseEntity(courseId);
-//    }
 }
 
 
