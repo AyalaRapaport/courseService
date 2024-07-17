@@ -1,18 +1,13 @@
 package com.diversitech.courseService.service;
-
 import com.diversitech.courseService.model.Classes;
 import com.diversitech.courseService.model.Course;
 import com.diversitech.courseService.model.Documents;
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -20,7 +15,6 @@ import java.util.List;
 public class CourseService {
 
     private final RestTemplate restTemplate;
-
     @Value("${external-apis.documents-service.urls.paths.docByCourseIdPath}")
     private String documentsServicePath;
     @Value("${external-apis.documents-service.urls.host}")
@@ -49,8 +43,10 @@ public class CourseService {
         this.restTemplate = restTemplate;
     }
 
-    public ResponseEntity<Course> getCourseById(String courseId) {
-        String url = dbConnectorHost + getCourseById + courseId;
+    public ResponseEntity<Course> getCourseById(int courseId) {
+        System.out.println(courseId);
+        String url = dbConnectorHost + getCourseById.replace("{courseId}", String.valueOf(courseId));
+        System.out.println(url);
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<Course> entity = new HttpEntity<>(headers);
         ResponseEntity<Course> response = restTemplate.exchange(url, HttpMethod.GET, entity, new ParameterizedTypeReference<Course>() {
@@ -70,6 +66,7 @@ public class CourseService {
     public ResponseEntity<List<Course>> getCourses() {
         String url = dbConnectorHost + getCourses;
         HttpHeaders headers = new HttpHeaders();
+//        https://old-seminar-2-back-4hjd.onrender.com/api/course/all
         HttpEntity<List<Course>> entity = new HttpEntity<>(headers);
         ResponseEntity<List<Course>> response = restTemplate.exchange(url, HttpMethod.GET, entity, new ParameterizedTypeReference<List<Course>>() {
         });
@@ -115,7 +112,7 @@ public class CourseService {
     }
 
     public ResponseEntity<List<Documents>> getDocumentsListResponseEntity(int courseId) {
-        String documentServiceUrl = documentsHost + documentsServicePath + courseId;
+        String documentServiceUrl = documentsHost + documentsServicePath.replace("{courseId}", String.valueOf(courseId));
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<List<Classes>> entity = new HttpEntity<>(headers);
         ResponseEntity<List<Documents>> response = restTemplate.exchange(documentServiceUrl, HttpMethod.GET, entity, new ParameterizedTypeReference<List<Documents>>() {

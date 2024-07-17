@@ -10,70 +10,64 @@ import java.util.Date;
 @Entity
 public class Documents {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int documents_id;
-        private String documents_name;
-        private String documents_type;
-        private String documents_url;
-        private Date uploaded_at;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int courseId;
+    private int documentsId;
+    private String documentsName;
+    private String documentsType;
+    private String documentsUrl;
 
+    public Documents(int courseId, int documentsId, String documentsName, String documentsType, String documentsUrl) {
+        this.courseId = courseId;
+        this.documentsId = documentsId;
+        this.documentsName = documentsName;
+        this.documentsType = documentsType;
+        this.documentsUrl = documentsUrl;
+    }
 
-        public Documents(int documentsId) {
+    public int getCourseId() {
+        return courseId;
+    }
 
-            documents_id = documentsId;
-        }
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
+    }
 
-        public Documents(int documentsId, String documents_name, String documents_type, String documents_url, Date uploaded_at) {
-            documents_id = documentsId;
-            this.documents_name = documents_name;
-            this.documents_type = documents_type;
-            this.documents_url = documents_url;
-            this.uploaded_at = uploaded_at;
-        }
+    public int getDocumentsId() {
+        return documentsId;
+    }
+
+    public void setDocumentsId(int documentsId) {
+        this.documentsId = documentsId;
+    }
+
+    public String getDocumentsName() {
+        return documentsName;
+    }
+
+    public void setDocumentsName(String documentsName) {
+        this.documentsName = documentsName;
+    }
+
+    public String getDocumentsType() {
+        return documentsType;
+    }
+
+    public void setDocumentsType(String documentsType) {
+        this.documentsType = documentsType;
+    }
+
+    public String getDocumentsUrl() {
+        return documentsUrl;
+    }
+
+    public void setDocumentsUrl(String documentsUrl) {
+        this.documentsUrl = documentsUrl;
+    }
 
     public Documents() {
 
-    }
-
-    public int getDocuments_id() {
-            return documents_id;
-        }
-
-        public String getDocuments_name() {
-            return documents_name;
-        }
-
-        public String getDocuments_type() {
-            return documents_type;
-        }
-
-        public String getDocuments_url() {
-            return documents_url;
-        }
-
-        public Date getUploaded_at() {
-            return uploaded_at;
-        }
-
-        public void setDocuments_name(String documents_name) {
-            this.documents_name = documents_name;
-        }
-
-        public void setDocuments_type(String documents_type) {
-            this.documents_type = documents_type;
-        }
-
-        public void setDocuments_url(String documents_url) {
-            this.documents_url = documents_url;
-        }
-
-        public void setUploaded_at(Date uploaded_at) {
-            this.uploaded_at = uploaded_at;
-        }
-
-    public void setDocuments_id(int documentId) {
-            this.documents_id=documentId;
     }
 }
 

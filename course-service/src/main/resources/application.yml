@@ -4,28 +4,29 @@ server:
 external-apis:
   classes-service:
     urls:
-      host: https://localhost:8081
+      host: 'https://localhost:8081'
       paths:
         classesByCourseIdPath: "/api/classes?courseId="
 
     api-key:
   documents-service:
     urls:
-      host: https://localhost:8082 #http://document-service, onrender.com on deployment
+      host: 'https://document-service-0q2q.onrender.com' #http://document-service, onrender.com on deployment
       paths:
-        docByCourseIdPath: "/api/documents?courseId="
+#        docByCourseIdPath: "/api/documents?courseId="
+         docByCourseIdPath: "/api/courseDocuments/getAllByCourseId/{courseId}"
     api-key:
   db-connector:
     urls:
-      host: http://localhost:8070
+      host: "https://old-seminar-2-back-4hjd.onrender.com"
       paths:
         getCourses:
-         "/api/getCourses"
+         "/api/course/all"
         getCourseById:
-         "/api/getCoursesById"
+         "/api/course/byId/{courseId}"
         addCourse:
-         "/api/addCourse"
+         "/api/course/add"
         updateCourse:
-         "/api/updateCourse"
+         "/api/course/update/{courseId}"
         deleteCourse:
-         "/api/deleteCourse"
+         "/api/course/delete/{courseId}"
